@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1>Home Page</h1>
+
+<div>
+
+    <div>
+    {% for land in lands %}
+
+        <div>
+            <h5>{{ land.id }} --<a href="{% url 'land' land.id %}">{{ land.name }}</a> </h5>
+        </div>
+
+
+    {% endfor %}
+
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
