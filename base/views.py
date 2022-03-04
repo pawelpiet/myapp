@@ -1,32 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Land
+from .models import Land, Race, Hero, Room
 # Create your views here.
 
-# races = [
-#     {'id': 1, 'name': 'Elves'},
-#     {'id': 2, 'name': 'Men'},
-#     {'id': 3, 'name': 'Dwarves'},
-#     {'id': 4, 'name': 'Hobbits'},
-#     {'id': 5, 'name': 'Ents'},
-#     {'id': 6, 'name': 'Orcs'},
-#     {'id': 7, 'name': 'Trolls'},
-#     {'id': 8, 'name': 'Spirits'},
-#     {'id': 9, 'name': 'Unknowns'},
-# ]
+
 
 
 def home(request):
     lands = Land.objects.all()
+    rooms = Room.objects.all()
     print('dsd')
-    context = {'lands': lands}
+    context = {'lands': lands, 'rooms': rooms}
     return render(request,'base/home.html', context) 
 
 def race(request,pk):
-    race = None
-    for i in races:
-        if i['id'] == int(pk):
-            room = i
+    race = Race.objects.get(id=pk)
     context = {'race':race}
     return render(request,'base/race.html', context)
 
@@ -34,6 +22,16 @@ def land(request,pk):
     land = Land.objects.get(id=pk)
     context = {'land':land}
     return render(request,'base/land.html', context)
+
+def hero(request,pk):
+    hero = Hero.objects.get(id=pk)
+    context = {'hero':hero}
+    return render(request,'base/hero.html', context)
+
+def room(request,pk):
+    room = Room.objects.get(id=pk)
+    context = {'room':room}
+    return render(request,'base/hero.html', context)
 
 
 
