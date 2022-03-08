@@ -23,10 +23,14 @@
 <h2>FORUM</h2>
 
 <div>
+
+    <a href="{%url 'create-room'%}"> Create new conversation</a>
     <div>
         {% for room in rooms %}
     
             <div>
+                <a href="{%url 'update-room' room.id %}"> Update room</a>
+                <a href="{%url 'delete-room' room.id %}"> Delete room</a>
                 <span>@{{room.host.username}}</span>
                 <h5>{{ room.id }} --<a href="{% url 'room' room.id %}">{{ room.name }}</a> </h5>
             </div>
